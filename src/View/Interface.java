@@ -5,11 +5,20 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
+import Controller.Employee;
+import Model.Calculates;
+
 /**
  *
  * @author juanm
  */
 public class Interface extends javax.swing.JFrame {
+
+    private int index = 0;
+    private Employee[] data = new Employee[99];
+    Calculates ObjM = new Calculates();
 
     /**
      * Creates new form Interface
@@ -45,6 +54,46 @@ public class Interface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panels = new javax.swing.JTabbedPane();
         p_Create = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        btn_Next = new javax.swing.JButton();
+        I_ExtSun = new javax.swing.JTextField();
+        I_ExtNig = new javax.swing.JTextField();
+        I_ExtDay = new javax.swing.JTextField();
+        I_DaysW = new javax.swing.JTextField();
+        I_Salary = new javax.swing.JTextField();
+        I_ZodSig = new javax.swing.JComboBox<>();
+        aN = new javax.swing.JRadioButton();
+        abN = new javax.swing.JRadioButton();
+        bN = new javax.swing.JRadioButton();
+        oN = new javax.swing.JRadioButton();
+        oP = new javax.swing.JRadioButton();
+        abP = new javax.swing.JRadioButton();
+        bP = new javax.swing.JRadioButton();
+        aP = new javax.swing.JRadioButton();
+        I_Disctrict = new javax.swing.JComboBox<>();
+        I_Mun = new javax.swing.JTextField();
+        E_ExpID = new javax.swing.JTextField();
+        I_BritDep = new javax.swing.JComboBox<>();
+        I_Div = new javax.swing.JComboBox<>();
+        I_Sec = new javax.swing.JComboBox<>();
+        I_Dep = new javax.swing.JComboBox<>();
+        txt_EmpTy = new javax.swing.JComboBox<>();
+        I_BrttDa = new com.toedter.calendar.JDateChooser();
         p_Read = new javax.swing.JPanel();
         p_Update = new javax.swing.JPanel();
         p_Delete = new javax.swing.JPanel();
@@ -178,12 +227,511 @@ public class Interface extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 26, 0);
         p_Menu.add(jLabel1, gridBagConstraints);
 
-        getContentPane().add(p_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 690));
+        getContentPane().add(p_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 720));
 
         panels.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         p_Create.setBackground(new java.awt.Color(35, 39, 42));
         p_Create.setLayout(new java.awt.GridBagLayout());
+
+        jLabel10.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel10.setText("Employee type");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel10, gridBagConstraints);
+
+        jLabel11.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel11.setText("Department");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel11, gridBagConstraints);
+
+        jLabel12.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel12.setText("Section");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel12, gridBagConstraints);
+
+        jLabel13.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel13.setText("Division");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel13, gridBagConstraints);
+
+        jLabel14.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel14.setText("Brithdate");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel14, gridBagConstraints);
+
+        jLabel15.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel15.setText("Departament");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel15, gridBagConstraints);
+
+        jLabel16.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel16.setText("Expedition Id");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel16, gridBagConstraints);
+
+        jLabel17.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel17.setText("Municipality");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel17, gridBagConstraints);
+
+        jLabel18.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel18.setText("District");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel18, gridBagConstraints);
+
+        jLabel19.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel19.setText("Blood Type");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel19, gridBagConstraints);
+
+        jLabel20.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel20.setText("Zodiac Sign");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel20, gridBagConstraints);
+
+        jLabel21.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel21.setText("Salary");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel21, gridBagConstraints);
+
+        jLabel22.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel22.setText("Days worked");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel22, gridBagConstraints);
+
+        jLabel23.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel23.setText("Daytime");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel23, gridBagConstraints);
+
+        jLabel24.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel24.setText("Night");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel24, gridBagConstraints);
+
+        jLabel25.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel25.setText("Sundays");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        p_Create.add(jLabel25, gridBagConstraints);
+
+        btn_Next.setBackground(new java.awt.Color(21, 245, 186));
+        btn_Next.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        btn_Next.setText("Next");
+        btn_Next.setBorder(null);
+        btn_Next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_NextActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 90;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
+        p_Create.add(btn_Next, gridBagConstraints);
+
+        I_ExtSun.setBackground(new java.awt.Color(49, 41, 102));
+        I_ExtSun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_ExtSun.setForeground(new java.awt.Color(240, 243, 255));
+        I_ExtSun.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_ExtSun.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_ExtSun, gridBagConstraints);
+
+        I_ExtNig.setBackground(new java.awt.Color(49, 41, 102));
+        I_ExtNig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_ExtNig.setForeground(new java.awt.Color(240, 243, 255));
+        I_ExtNig.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_ExtNig.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_ExtNig, gridBagConstraints);
+
+        I_ExtDay.setBackground(new java.awt.Color(49, 41, 102));
+        I_ExtDay.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_ExtDay.setForeground(new java.awt.Color(240, 243, 255));
+        I_ExtDay.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_ExtDay.setPreferredSize(new java.awt.Dimension(220, 24));
+        I_ExtDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                I_ExtDayActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_ExtDay, gridBagConstraints);
+
+        I_DaysW.setBackground(new java.awt.Color(49, 41, 102));
+        I_DaysW.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_DaysW.setForeground(new java.awt.Color(240, 243, 255));
+        I_DaysW.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_DaysW.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_DaysW, gridBagConstraints);
+
+        I_Salary.setBackground(new java.awt.Color(49, 41, 102));
+        I_Salary.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Salary.setForeground(new java.awt.Color(240, 243, 255));
+        I_Salary.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_Salary.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_Salary, gridBagConstraints);
+
+        I_ZodSig.setBackground(new java.awt.Color(33, 25, 81));
+        I_ZodSig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_ZodSig.setForeground(new java.awt.Color(240, 243, 255));
+        I_ZodSig.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Aries", "2. Tauro", "3. Géminis", "4. Cáncer", "5. Leo", "6. Virgo", "7. Libra", "8. Escorpión", "9. Sagitario", "10. Capricornio", "11. Acuario", "12. Piscis" }));
+        I_ZodSig.setFocusable(false);
+        I_ZodSig.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_ZodSig, gridBagConstraints);
+
+        aN.setBackground(new java.awt.Color(33, 25, 81));
+        aN.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        aN.setForeground(new java.awt.Color(240, 243, 255));
+        aN.setText("A-");
+        aN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(aN, gridBagConstraints);
+
+        abN.setBackground(new java.awt.Color(33, 25, 81));
+        abN.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        abN.setForeground(new java.awt.Color(240, 243, 255));
+        abN.setText("AB-");
+        abN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(abN, gridBagConstraints);
+
+        bN.setBackground(new java.awt.Color(33, 25, 81));
+        bN.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bN.setForeground(new java.awt.Color(240, 243, 255));
+        bN.setText("B-");
+        bN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(bN, gridBagConstraints);
+
+        oN.setBackground(new java.awt.Color(33, 25, 81));
+        oN.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        oN.setForeground(new java.awt.Color(240, 243, 255));
+        oN.setText("O-");
+        oN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(oN, gridBagConstraints);
+
+        oP.setBackground(new java.awt.Color(33, 25, 81));
+        oP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        oP.setForeground(new java.awt.Color(240, 243, 255));
+        oP.setText("O+");
+        oP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(oP, gridBagConstraints);
+
+        abP.setBackground(new java.awt.Color(33, 25, 81));
+        abP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        abP.setForeground(new java.awt.Color(240, 243, 255));
+        abP.setText("AB+");
+        abP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(abP, gridBagConstraints);
+
+        bP.setBackground(new java.awt.Color(33, 25, 81));
+        bP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bP.setForeground(new java.awt.Color(240, 243, 255));
+        bP.setText("B+");
+        bP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(bP, gridBagConstraints);
+
+        aP.setBackground(new java.awt.Color(33, 25, 81));
+        aP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        aP.setForeground(new java.awt.Color(240, 243, 255));
+        aP.setText("A+");
+        aP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        aP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aPActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(aP, gridBagConstraints);
+
+        I_Disctrict.setBackground(new java.awt.Color(33, 25, 81));
+        I_Disctrict.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Disctrict.setForeground(new java.awt.Color(240, 243, 255));
+        I_Disctrict.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aida Lucía", "Las Américas", "El Valencia", "El Recuerdo", "El Bosque", "San José", "El Lido", "Santa Clara", "El Encanto", "San Fernando", "San Camilo", "La Floresta", "Los Alamos", "Ciudad Jardín", "El Mirador", "La Esmeralda", "La Paz", "El Paraíso", "La Pradera", "El Palmar", "La Estrella", "Los Pinos", "La Primavera", "La Aurora", "La Castellana", "El Recreo", "El Paraíso", "San Francisco", "El Verge" }));
+        I_Disctrict.setFocusable(false);
+        I_Disctrict.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_Disctrict, gridBagConstraints);
+
+        I_Mun.setBackground(new java.awt.Color(49, 41, 102));
+        I_Mun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Mun.setForeground(new java.awt.Color(240, 243, 255));
+        I_Mun.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_Mun.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_Mun, gridBagConstraints);
+
+        E_ExpID.setBackground(new java.awt.Color(49, 41, 102));
+        E_ExpID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        E_ExpID.setForeground(new java.awt.Color(240, 243, 255));
+        E_ExpID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        E_ExpID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        E_ExpID.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        E_ExpID.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(E_ExpID, gridBagConstraints);
+
+        I_BritDep.setBackground(new java.awt.Color(33, 25, 81));
+        I_BritDep.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_BritDep.setForeground(new java.awt.Color(240, 243, 255));
+        I_BritDep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Amazonas", "2. Antioquia", "3. Arauca", "4. Atlántico", "5. Bolívar", "6. Boyacá", "7. Caldas", "8. Caquetá", "9. Casanare", "10. Cauca", "11. Cesar", "12. Chocó", "13. Córdoba", "14. Cundinamarca", "15. Guainía", "16. Guaviare", "17. Huila", "18. La Guajira", "19. Magdalena", "20. Meta", "21. Nariño", "22. Norte de Santander", "23. Putumayo", "24. Quindio", "25. Risaralda", "26. San Andrés y Providencia", "27. Santander", "28. Sucre", "29. Tolima", "30. Valle del Cauca", "31. Vaupés", "32. Vichada" }));
+        I_BritDep.setFocusable(false);
+        I_BritDep.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_BritDep, gridBagConstraints);
+
+        I_Div.setBackground(new java.awt.Color(33, 25, 81));
+        I_Div.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Div.setForeground(new java.awt.Color(240, 243, 255));
+        I_Div.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Insumos", "2. Repuestos", "3. Herramientas manuales", "4. Herramientas electromecánicas" }));
+        I_Div.setFocusable(false);
+        I_Div.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_Div, gridBagConstraints);
+
+        I_Sec.setBackground(new java.awt.Color(33, 25, 81));
+        I_Sec.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Sec.setForeground(new java.awt.Color(240, 243, 255));
+        I_Sec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Electrodomésticos", "2. Gaseodomésticos", "3. Papelería", "4. Libros", "5. Juguetería", "6. Deportes", "7. Ropa deportiva hombre", "8. Ropa casual hombre", "9. Ropa deportiva dama", "10. Ropa casual dama", "11. Ropa deportiva niños y niñas", "12. Ropa casual niños y niñas", "13. Ropa bebés", "14. Ropa interior caballeros", "15. Ropa interior damas", "16. Granos y abarrotes", "17. Enlatados", "18. Vinos y licores", "19. Carnes", "20. Carnes frías", "21. Charcutería", "22. Lácteos", "23. Aseo hogar", "24. Aseo personal", "25. Cosméticos", "26. Ropa de cama", "27. Utensilios de cocina", "28. Ferretería", "29. Souvenirs", "30. Zapatería" }));
+        I_Sec.setFocusable(false);
+        I_Sec.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_Sec, gridBagConstraints);
+
+        I_Dep.setBackground(new java.awt.Color(33, 25, 81));
+        I_Dep.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Dep.setForeground(new java.awt.Color(240, 243, 255));
+        I_Dep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Administración", "2. Publicidad y mercadeo", "3. Ventas", "4. Mantenimiento", "5. Bodega", "6. Transporte", "7. Servicios generales", "8. Sistemas" }));
+        I_Dep.setToolTipText("");
+        I_Dep.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        I_Dep.setFocusable(false);
+        I_Dep.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(I_Dep, gridBagConstraints);
+
+        txt_EmpTy.setBackground(new java.awt.Color(33, 25, 81));
+        txt_EmpTy.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txt_EmpTy.setForeground(new java.awt.Color(240, 243, 255));
+        txt_EmpTy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Fijo", "2. Temporal", "3. Cooperativa" }));
+        txt_EmpTy.setToolTipText("");
+        txt_EmpTy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txt_EmpTy.setFocusable(false);
+        txt_EmpTy.setPreferredSize(new java.awt.Dimension(220, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Create.add(txt_EmpTy, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        p_Create.add(I_BrttDa, gridBagConstraints);
+
         panels.addTab("tab1", p_Create);
 
         p_Read.setBackground(new java.awt.Color(35, 39, 42));
@@ -198,7 +746,7 @@ public class Interface extends javax.swing.JFrame {
         p_Delete.setLayout(new java.awt.GridBagLayout());
         panels.addTab("tab4", p_Delete);
 
-        getContentPane().add(panels, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 730, 690));
+        getContentPane().add(panels, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 730, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,6 +779,89 @@ public class Interface extends javax.swing.JFrame {
         b_Delete.setBorderWidth(5);
     }//GEN-LAST:event_b_DeleteMouseClicked
 
+    private void btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NextActionPerformed
+        // 
+        int BloodType;
+        if(aP.isSelected()){
+            BloodType = 1;
+        }else if(aN.isSelected()){
+            BloodType = 2;
+        }else if(bP.isSelected()){
+            BloodType = 3;
+        }else if(bN.isSelected()){
+            BloodType = 4;
+        }else if(abP.isSelected()){
+            BloodType = 5;
+        }else if(abN.isSelected()){
+            BloodType = 6;
+        }else if(oP.isSelected()){
+            BloodType = 7;
+        }else if(oN.isSelected()){
+            BloodType = 1;
+        }else{
+            BloodType = 0;
+        }
+        
+        boolean FlasState = false;//Variable que va a almacenar true si los datos estan correctos
+            try{
+                if(I_BrttDa.getDate() == null|| I_Mun.getText().isEmpty() || E_ExpID.getText().isEmpty()|| (BloodType == 0)){
+                    //Error in inputs (Clean inputs)
+                    JOptionPane.showMessageDialog(this, "Ningun capo debe estar vacio. \n Ingresa de nuevo los datos.");
+                }else if(Double.parseDouble(I_Salary.getText()) < 800){
+                    JOptionPane.showMessageDialog(this, "El salario debe ser mayor o igual al SMLV");
+                }else if(Double.parseDouble(I_DaysW.getText())<1 && Double.parseDouble(I_DaysW.getText())>15){
+                    JOptionPane.showMessageDialog(this, "Los dias trabajados deben estar entre 1 y 15");
+                }else if(Integer.parseInt(I_ExtDay.getText()) < 0 && Integer.parseInt(I_ExtDay.getText()) > 20){
+                    JOptionPane.showMessageDialog(this, "Las horas extras diurnas deben estar entre 0 y 20");
+                }else if(Integer.parseInt(I_ExtNig.getText()) < 0 && Integer.parseInt(I_ExtNig.getText()) > 30){
+                    JOptionPane.showMessageDialog(this, "Las horas extras nocturnas deben estar entre 0 y 30");
+                }else if(Integer.parseInt(I_ExtSun.getText()) < 0 && Integer.parseInt(I_ExtSun.getText())> 40){
+                    JOptionPane.showMessageDialog(this, "Las horas extras dominicales deben estar entre 0 y 40");
+                }else{
+                    FlasState = true;
+                }
+            }catch(NumberFormatException e){
+                //Esto se ejecuta si hay un error de tipo NumberFormatException
+                JOptionPane.showMessageDialog(this, "Error en al ingresar los datos \n" + e.getMessage() + "\n Ingresa de nuevo los datos.");
+                System.out.println("Error" + e.getMessage());
+            }
+        //Se hace un if con la variable FlagState para 
+        //Settear los datos si todos estan dentro de los parametros
+    if(FlasState){
+        //Setteo de datos
+        data[index].setJA_EmplTy_47(txt_EmpTy.getSelectedIndex() + 1);
+        data[index].setJA_WorkDep_47(I_Dep.getSelectedIndex() + 1);
+        data[index].setDateTimeJA_BrithDate_47(I_BrttDa.getDate());
+        data[index].setJA_BrithDep_47(I_BritDep.getSelectedIndex() + 1);
+        data[index].setJA_ExpID_47(E_ExpID.getText());
+        data[index].setJA_Mun_47(I_Mun.getText());
+        data[index].setJA_District(String.valueOf(I_Disctrict.getSelectedItem()));
+        data[index].setJA_BloodTy_47(BloodType);
+        data[index].setJA_ZodiSign_47(I_ZodSig.getSelectedIndex() + 1);
+        data[index].setJA_SBMA_47(Double.parseDouble(I_Salary.getText()));
+        data[index].setJA_DayW_47(Integer.parseInt(I_DaysW.getText()));
+        data[index].setJA_ExtrD_47(Integer.parseInt(I_ExtDay.getText()));
+        data[index].setJA_ExtrN_47(Integer.parseInt(I_ExtNig.getText()));
+        data[index].setJA_ExtrS(Integer.parseInt(I_ExtSun.getText()));
+
+        if(I_Dep.getSelectedIndex() == 2){
+            data[index].setJA_Sec_47(I_Sec.getSelectedIndex() +1);
+            if(I_Sec.getSelectedIndex() == 27){
+                data[index].setJA_Div_47(I_Div.getSelectedIndex() +1);
+            }
+        }
+        SendValues();
+    }
+    }//GEN-LAST:event_btn_NextActionPerformed
+
+    private void I_ExtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_I_ExtDayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_I_ExtDayActionPerformed
+
+    private void aPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aPActionPerformed
+
     private void ClearButtons(){
         b_Create.setBorderWidth(0);
         b_Update.setBorderWidth(0);
@@ -238,7 +869,70 @@ public class Interface extends javax.swing.JFrame {
         b_Delete.setBorderWidth(0);
     }
 
-    
+    private void SendValues(){
+        //Realiza los calculos
+        data[index].setJA_Age_47(ObjM.Ja_CalcAge_47(data[index].getDateTimeJA_BrithDate_47()));
+        System.out.println(String.valueOf(data[index].getJA_Age_47()));
+        //Time value-------------------------------------------------------------------------------------------------------------------------------------
+        data[index].setJA_Day_47(ObjM.JA_Day_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Fortnight_47(ObjM.JA_Fortnight_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Week_47(ObjM.JA_Week_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Bimester_47(ObjM.JA_Bimester_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Trimester_47(ObjM.JA_Trimester_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Semester_47(ObjM.JA_Semester_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Annual_47(ObjM.JA_Annual_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Quinquennium_47(ObjM.JA_Quinquennium_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Hour_47(ObjM.JA_Hour_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Minute_47(ObjM.JA_Minute_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Second_47(ObjM.JA_Second_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_TenthSecond_47(ObjM.JA_TenthSecond_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_HundredthSecond_47(ObjM.JA_HundredthSecond_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Nanosecond_47(ObjM.JA_Nanosecond_47(data[index].getJA_SBMA_47()));
+        data[index].setJA_Picosecond_47(ObjM.JA_Picosecond_47(data[index].getJA_SBMA_47()));
+
+        data[index].setJA_ExtrDVal_47(ObjM.JA_Daytime_47(data[index].getJA_WorkDep_47(), data[index].getJA_Sec_47(), data[index].getJA_Div_47(), data[index].getJA_Hour_47()));
+        data[index].setJA_ExtrNVal_47(ObjM.JA_Night_47(data[index].getJA_WorkDep_47(), data[index].getJA_Sec_47(), data[index].getJA_Div_47(), data[index].getJA_Hour_47()));
+        data[index].setJA_ExtrSVal_47(ObjM.JA_Sunday_57(data[index].getJA_WorkDep_47(), data[index].getJA_Sec_47(), data[index].getJA_Div_47(), data[index].getJA_Hour_47()));
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
+        //Total time value -------------------------------------------------------------------------------------------------------------
+        data[index].setJA_devengadSalary_47(ObjM.JA_devengadSalary_47(data[index].getJA_DayW_47(), data[index].getJA_Day_47()));
+        data[index].setJA_Daytime_47(ObjM.JA_Daytime_47(data[index].getJA_ExtrD_47(), data[index].getJA_ExtrDVal_47()));
+        data[index].setJA_Nocturnal_47(ObjM.JA_Nocturnal_47(data[index].getJA_ExtrN_47(), data[index].getJA_ExtrNVal_47()));
+        data[index].setJA_Sunday_47(ObjM.JA_Sundays_47(data[index].getJA_ExtrS(), data[index].getJA_ExtrSVal_47()));
+        //Total segundos extra -------------->
+        //Total decima de segundos extra ---->
+        //Total centecima de segundos extra ->
+        //Total nanosegundos extra ---------->
+        //Total picosegundos extra ---------->
+        //------------------------------------------------------------------------------------------------------------------------------
+
+        //Premiums ---------------------------------------------------------------------------------------------------------------------
+        data[index].setJA_Premiums_47("Jacaranda", ObjM.JA_JacarandePremium_47(data[index].getJA_ExtrD_47(), data[index].getJA_BrithDep_47(), data[index].getJA_Mun_47(), data[index].getJA_SBMA_47()));
+        data[index].setJA_Premiums_47("Marcelina", ObjM.JA_MarcelinaPremium_47(data[index].getJA_Hour_47(), data[index].getJA_ExpID_47(), data[index].getJA_BloodTy_47(), data[index].getJA_ZodiSign_47(), data[index].getJA_Premiums_47("Jacaranda")));
+        data[index].setJA_Premiums_47("Firicundina", ObjM.JA_FiricundinaPremium_47(data[index].getJA_EmplTy_47(), data[index].getJA_Premiums_47("Marcelina")));
+        data[index].setJA_Premiums_47("Petunia", ObjM.JA_PetuniaPremium_47(data[index].getJA_Week_47(), data[index].getJA_Premiums_47("Firicundina")));
+        data[index].setJA_Premiums_47("Hermenegilda", ObjM.JA_HermenegildaPremium_47(data[index].getJA_Age_47(), data[index].getJA_WorkDep_47(), data[index].getJA_Sec_47(), data[index].getJA_Div_47(), data[index].getJA_Mun_47(), data[index].getJA_BloodTy_47(), data[index].getJA_SBMA_47(), data[index].getJA_District(), data[index].getJA_Premiums_47("Jacaranda"), data[index].getJA_Premiums_47("Petunia")));
+        data[index].setJA_Premiums_47("Age", ObjM.JA_AgePremium_47(data[index].getJA_Age_47(), data[index].getJA_Fortnight_47()));
+        data[index].setJA_Premiums_47("Feending", ObjM.JA_FeednigPremium_47(data[index].getJA_Fortnight_47(), 800));
+        data[index].setJA_Premiums_47("Production", ObjM.JA_ProductionPremium_47(data[index].getJA_WorkDep_47(), data[index].getJA_Sec_47(), data[index].getJA_Fortnight_47()));
+        data[index].setJA_Premiums_47("Consanguinity", ObjM.JA_ConsanguinityPremium_47(data[index].getJA_SBMA_47(), data[index].getJA_BloodTy_47(), data[index].getJA_BrithDep_47(), data[index].getJA_Age_47(), data[index].getJA_ExtrD_47()));
+        //----------------------------------------------------------------------------------------------------------------------------
+
+        //Discounts ------------------------------------------------------------------------------------------------------------------
+        data[index].setJA_Pension_47(ObjM.JA_Pension_47(data[index].getJA_SBMA_47(), 800));
+        data[index].setJA_Health_47(ObjM.JA_Health_47(data[index].getJA_SBMA_47(), 800));
+        data[index].setJA_Transport_47(ObjM.JA_Transport_47(800, data[index].getJA_SBMA_47()));
+        //----------------------------------------------------------------------------------------------------------------------------
+
+        //Totals ---------------------------------------------------------------------------------------------------------------------
+        data[index].setJA_TPremiums_47(ObjM.TotalPrem(data[index].getAllPremiums()));
+        data[index].setJA_TotalWorked_47(ObjM.JA_totalsWorked_47(data[index].getJA_devengadSalary_47(), data[index].getJA_Daytime_47(), data[index].getJA_Nocturnal_47(), data[index].getJA_Sunday_47(), data[index].getJA_Second_47(), data[index].getJA_TenthSecond_47(), data[index].getJA_HundredthSecond_47(), data[index].getJA_Nanosecond_47(), data[index].getJA_Picosecond_47()));
+        data[index].setJA_Deducid_47(ObjM.JA_Deducid_47(0, data[index].getJA_Health_47(), data[index].getJA_Pension_47()));
+        data[index].setJA_TotDevegad_47(ObjM.JA_TotDevegad_47(data[index].getJA_TPremiums_47(), data[index].getJA_TotalWorked_47(), data[index].getJA_Transport_47()));
+        data[index].setJA_Net_47(ObjM.JA_Net_47(data[index].getJA_Deducid_47(), data[index].getJA_TotDevegad_47()));
+        //----------------------------------------------------------------------------------------------------------------------------
+    }
     /**
      * @param args the command line arguments
      */
@@ -275,12 +969,49 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField E_ExpID;
+    private javax.swing.JComboBox<String> I_BritDep;
+    private com.toedter.calendar.JDateChooser I_BrttDa;
+    private javax.swing.JTextField I_DaysW;
+    private javax.swing.JComboBox<String> I_Dep;
+    private javax.swing.JComboBox<String> I_Disctrict;
+    private javax.swing.JComboBox<String> I_Div;
+    private javax.swing.JTextField I_ExtDay;
+    private javax.swing.JTextField I_ExtNig;
+    private javax.swing.JTextField I_ExtSun;
+    private javax.swing.JTextField I_Mun;
+    private javax.swing.JTextField I_Salary;
+    private javax.swing.JComboBox<String> I_Sec;
+    private javax.swing.JComboBox<String> I_ZodSig;
+    private javax.swing.JRadioButton aN;
+    private javax.swing.JRadioButton aP;
+    private javax.swing.JRadioButton abN;
+    private javax.swing.JRadioButton abP;
+    private javax.swing.JRadioButton bN;
+    private javax.swing.JRadioButton bP;
     private manulibrary.buttonPanel b_Create;
     private manulibrary.buttonPanel b_Delete;
     private manulibrary.buttonPanel b_Read;
     private manulibrary.buttonPanel b_Update;
+    private javax.swing.JButton btn_Next;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -288,11 +1019,14 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton oN;
+    private javax.swing.JRadioButton oP;
     private javax.swing.JPanel p_Create;
     private javax.swing.JPanel p_Delete;
     private javax.swing.JPanel p_Menu;
     private javax.swing.JPanel p_Read;
     private javax.swing.JPanel p_Update;
     private javax.swing.JTabbedPane panels;
+    private javax.swing.JComboBox<String> txt_EmpTy;
     // End of variables declaration//GEN-END:variables
 }
