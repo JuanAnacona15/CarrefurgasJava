@@ -95,8 +95,24 @@ public class Interface extends javax.swing.JFrame {
         txt_EmpTy = new javax.swing.JComboBox<>();
         I_BrttDa = new com.toedter.calendar.JDateChooser();
         p_Read = new javax.swing.JPanel();
-        p_Update = new javax.swing.JPanel();
         p_Delete = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel30 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        buttonPanel1 = new manulibrary.buttonPanel();
+        jLabel31 = new javax.swing.JLabel();
+        p_Update = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_Update = new javax.swing.JTextArea();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        I_IDUpdate = new javax.swing.JTextField();
+        I_NewValueUpdate = new javax.swing.JTextField();
+        btn_Update = new manulibrary.buttonPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -738,13 +754,155 @@ public class Interface extends javax.swing.JFrame {
         p_Read.setLayout(new java.awt.GridBagLayout());
         panels.addTab("tab2", p_Read);
 
-        p_Update.setBackground(new java.awt.Color(35, 39, 42));
-        p_Update.setLayout(new java.awt.GridBagLayout());
-        panels.addTab("tab3", p_Update);
-
         p_Delete.setBackground(new java.awt.Color(35, 39, 42));
         p_Delete.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        jTextArea1.setBackground(new java.awt.Color(44, 47, 51));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(114, 137, 218), 1, true), "Output Delete", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(114, 137, 218))); // NOI18N
+        jScrollPane2.setViewportView(jTextArea1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        p_Delete.add(jScrollPane2, gridBagConstraints);
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Identification");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        p_Delete.add(jLabel30, gridBagConstraints);
+
+        jTextField1.setColumns(15);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        p_Delete.add(jTextField1, gridBagConstraints);
+
+        buttonPanel1.setBorderColor(new java.awt.Color(254, 255, 255));
+        buttonPanel1.setBorderWidth(5);
+        buttonPanel1.setCornerRadius(50);
+        buttonPanel1.setEndColor(new java.awt.Color(255, 51, 51));
+        buttonPanel1.setPreferredSize(new java.awt.Dimension(150, 70));
+        buttonPanel1.setStartColor(new java.awt.Color(204, 0, 153));
+        buttonPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 34)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("Delete");
+        buttonPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        p_Delete.add(buttonPanel1, gridBagConstraints);
+
         panels.addTab("tab4", p_Delete);
+
+        p_Update.setBackground(new java.awt.Color(35, 39, 42));
+        p_Update.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        txt_Update.setBackground(new java.awt.Color(44, 47, 51));
+        txt_Update.setColumns(20);
+        txt_Update.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Update.setRows(5);
+        txt_Update.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(114, 137, 218), 1, true), "Output Update", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(114, 137, 218))); // NOI18N
+        jScrollPane1.setViewportView(txt_Update);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(jScrollPane1, gridBagConstraints);
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Identification");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(jLabel26, gridBagConstraints);
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Value to Update");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(jLabel27, gridBagConstraints);
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("New Value");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(jLabel28, gridBagConstraints);
+
+        I_IDUpdate.setColumns(15);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(I_IDUpdate, gridBagConstraints);
+
+        I_NewValueUpdate.setColumns(15);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(I_NewValueUpdate, gridBagConstraints);
+
+        btn_Update.setBorderColor(new java.awt.Color(204, 204, 204));
+        btn_Update.setBorderWidth(5);
+        btn_Update.setCornerRadius(50);
+        btn_Update.setEndColor(new java.awt.Color(0, 110, 140));
+        btn_Update.setPreferredSize(new java.awt.Dimension(150, 70));
+        btn_Update.setStartColor(new java.awt.Color(0, 0, 124));
+        btn_Update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Update");
+        btn_Update.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 70));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        p_Update.add(btn_Update, gridBagConstraints);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Days Worked", "Extra Day", "Extra Night", "Extra Sunday", "SBMA", " " }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        p_Update.add(jComboBox1, gridBagConstraints);
+
+        panels.addTab("tab3", p_Update);
 
         getContentPane().add(panels, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 730, 720));
 
@@ -979,7 +1137,9 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField I_ExtDay;
     private javax.swing.JTextField I_ExtNig;
     private javax.swing.JTextField I_ExtSun;
+    private javax.swing.JTextField I_IDUpdate;
     private javax.swing.JTextField I_Mun;
+    private javax.swing.JTextField I_NewValueUpdate;
     private javax.swing.JTextField I_Salary;
     private javax.swing.JComboBox<String> I_Sec;
     private javax.swing.JComboBox<String> I_ZodSig;
@@ -994,6 +1154,9 @@ public class Interface extends javax.swing.JFrame {
     private manulibrary.buttonPanel b_Read;
     private manulibrary.buttonPanel b_Update;
     private javax.swing.JButton btn_Next;
+    private manulibrary.buttonPanel btn_Update;
+    private manulibrary.buttonPanel buttonPanel1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1012,13 +1175,23 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton oN;
     private javax.swing.JRadioButton oP;
     private javax.swing.JPanel p_Create;
@@ -1028,5 +1201,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JPanel p_Update;
     private javax.swing.JTabbedPane panels;
     private javax.swing.JComboBox<String> txt_EmpTy;
+    private javax.swing.JTextArea txt_Update;
     // End of variables declaration//GEN-END:variables
 }
