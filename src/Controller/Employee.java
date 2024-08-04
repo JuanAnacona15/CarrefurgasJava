@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
+    private int ID;
+    private String Name;
     private int JA_WorkDep_47, JA_Sec_47, JA_Div_47, JA_BrithDep_47, JA_ZodiSign_47, JA_BloodTy_47, JA_ExtrD_47, JA_ExtrN_47, JA_ExtrS;
     private int JA_DayW_47, JA_Age_47, JA_EmplTy_47;
     private Date DateTimeJA_BrithDate_47;
@@ -37,6 +39,32 @@ public class Employee {
         JA_Premiums_47.put("Consanguinity", 0.0);
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public static Map<String, Double> getJA_Premiums_47() {
+        return JA_Premiums_47;
+    }
+
+    public static void setJA_Premiums_47(Map<String, Double> JA_Premiums_47) {
+        Employee.JA_Premiums_47 = JA_Premiums_47;
+    }
+
+    
+    
     public static double getJA_Premiums_47(String key) {
         return JA_Premiums_47.getOrDefault(key, 0.0);
     }

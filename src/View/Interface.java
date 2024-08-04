@@ -6,9 +6,13 @@
 package View;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import Controller.Employee;
 import Model.Calculates;
+import Model.Ordenamiento;
 
 /**
  *
@@ -17,8 +21,10 @@ import Model.Calculates;
 public class Interface extends javax.swing.JFrame {
 
     private int index = 0;
-    private Employee[] data = new Employee[99];
+    private Employee[] data = new Employee[100];
     Calculates ObjM = new Calculates();
+    Ordenamiento ObjOrd = new Ordenamiento();
+    DefaultTableModel ModelTable = new DefaultTableModel();
 
     /**
      * Creates new form Interface
@@ -26,6 +32,15 @@ public class Interface extends javax.swing.JFrame {
     public Interface() {
         initComponents();
         this.setLocationRelativeTo(null);
+        for(int i = 0; i < 100; i++){
+            data[i] = new Employee();
+        }
+        String ids[] = {"ID", "Name", "Days Worked", "E.Day", "E.Night", "E.Sunday", "SBMA", "Net"};
+        ModelTable.setColumnIdentifiers(ids);
+
+        JTableHeader he = tableData.getTableHeader();
+        he.setFont(new java.awt.Font("Tahoma", 1, 15));
+        tableData.setModel(ModelTable);
     }
 
     /**
@@ -94,13 +109,19 @@ public class Interface extends javax.swing.JFrame {
         I_Dep = new javax.swing.JComboBox<>();
         txt_EmpTy = new javax.swing.JComboBox<>();
         I_BrttDa = new com.toedter.calendar.JDateChooser();
+        jLabel32 = new javax.swing.JLabel();
+        I_ID = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        I_Name = new javax.swing.JTextField();
         p_Read = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableData = new javax.swing.JTable();
         p_Delete = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_Delete = new javax.swing.JTextArea();
         jLabel30 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        buttonPanel1 = new manulibrary.buttonPanel();
+        I_IDDelete = new javax.swing.JTextField();
+        btn_Delete = new manulibrary.buttonPanel();
         jLabel31 = new javax.swing.JLabel();
         p_Update = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -109,10 +130,10 @@ public class Interface extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         I_IDUpdate = new javax.swing.JTextField();
-        I_NewValueUpdate = new javax.swing.JTextField();
+        I_ValueUpdate = new javax.swing.JTextField();
         btn_Update = new manulibrary.buttonPanel();
         jLabel29 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        I_AtributeUpdate = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -255,8 +276,10 @@ public class Interface extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(240, 243, 255));
         jLabel10.setText("Employee type");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel10, gridBagConstraints);
 
         jLabel11.setBackground(new java.awt.Color(240, 243, 255));
@@ -265,9 +288,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel11.setText("Department");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel11, gridBagConstraints);
 
         jLabel12.setBackground(new java.awt.Color(240, 243, 255));
@@ -276,9 +299,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel12.setText("Section");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel12, gridBagConstraints);
 
         jLabel13.setBackground(new java.awt.Color(240, 243, 255));
@@ -287,9 +310,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel13.setText("Division");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel13, gridBagConstraints);
 
         jLabel14.setBackground(new java.awt.Color(240, 243, 255));
@@ -298,9 +321,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel14.setText("Brithdate");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel14, gridBagConstraints);
 
         jLabel15.setBackground(new java.awt.Color(240, 243, 255));
@@ -309,20 +332,20 @@ public class Interface extends javax.swing.JFrame {
         jLabel15.setText("Departament");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel15, gridBagConstraints);
 
         jLabel16.setBackground(new java.awt.Color(240, 243, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(240, 243, 255));
-        jLabel16.setText("Expedition Id");
+        jLabel16.setText("Identification");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel16, gridBagConstraints);
 
         jLabel17.setBackground(new java.awt.Color(240, 243, 255));
@@ -331,9 +354,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel17.setText("Municipality");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel17, gridBagConstraints);
 
         jLabel18.setBackground(new java.awt.Color(240, 243, 255));
@@ -342,9 +365,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel18.setText("District");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel18, gridBagConstraints);
 
         jLabel19.setBackground(new java.awt.Color(240, 243, 255));
@@ -353,10 +376,10 @@ public class Interface extends javax.swing.JFrame {
         jLabel19.setText("Blood Type");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel19, gridBagConstraints);
 
         jLabel20.setBackground(new java.awt.Color(240, 243, 255));
@@ -365,9 +388,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel20.setText("Zodiac Sign");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel20, gridBagConstraints);
 
         jLabel21.setBackground(new java.awt.Color(240, 243, 255));
@@ -376,9 +399,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel21.setText("Salary");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel21, gridBagConstraints);
 
         jLabel22.setBackground(new java.awt.Color(240, 243, 255));
@@ -387,9 +410,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel22.setText("Days worked");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel22, gridBagConstraints);
 
         jLabel23.setBackground(new java.awt.Color(240, 243, 255));
@@ -398,9 +421,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel23.setText("Daytime");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel23, gridBagConstraints);
 
         jLabel24.setBackground(new java.awt.Color(240, 243, 255));
@@ -411,7 +434,7 @@ public class Interface extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel24, gridBagConstraints);
 
         jLabel25.setBackground(new java.awt.Color(240, 243, 255));
@@ -420,9 +443,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel25.setText("Sundays");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 17);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
         p_Create.add(jLabel25, gridBagConstraints);
 
         btn_Next.setBackground(new java.awt.Color(21, 245, 186));
@@ -436,12 +459,12 @@ public class Interface extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridy = 19;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 90;
         gridBagConstraints.ipady = 6;
-        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
         p_Create.add(btn_Next, gridBagConstraints);
 
         I_ExtSun.setBackground(new java.awt.Color(49, 41, 102));
@@ -451,10 +474,10 @@ public class Interface extends javax.swing.JFrame {
         I_ExtSun.setPreferredSize(new java.awt.Dimension(220, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_ExtSun, gridBagConstraints);
 
         I_ExtNig.setBackground(new java.awt.Color(49, 41, 102));
@@ -464,10 +487,10 @@ public class Interface extends javax.swing.JFrame {
         I_ExtNig.setPreferredSize(new java.awt.Dimension(220, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridy = 17;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_ExtNig, gridBagConstraints);
 
         I_ExtDay.setBackground(new java.awt.Color(49, 41, 102));
@@ -482,10 +505,10 @@ public class Interface extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_ExtDay, gridBagConstraints);
 
         I_DaysW.setBackground(new java.awt.Color(49, 41, 102));
@@ -495,10 +518,10 @@ public class Interface extends javax.swing.JFrame {
         I_DaysW.setPreferredSize(new java.awt.Dimension(220, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_DaysW, gridBagConstraints);
 
         I_Salary.setBackground(new java.awt.Color(49, 41, 102));
@@ -508,10 +531,10 @@ public class Interface extends javax.swing.JFrame {
         I_Salary.setPreferredSize(new java.awt.Dimension(220, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_Salary, gridBagConstraints);
 
         I_ZodSig.setBackground(new java.awt.Color(33, 25, 81));
@@ -522,10 +545,10 @@ public class Interface extends javax.swing.JFrame {
         I_ZodSig.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_ZodSig, gridBagConstraints);
 
         aN.setBackground(new java.awt.Color(33, 25, 81));
@@ -535,9 +558,9 @@ public class Interface extends javax.swing.JFrame {
         aN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(aN, gridBagConstraints);
 
         abN.setBackground(new java.awt.Color(33, 25, 81));
@@ -547,8 +570,8 @@ public class Interface extends javax.swing.JFrame {
         abN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(abN, gridBagConstraints);
 
         bN.setBackground(new java.awt.Color(33, 25, 81));
@@ -558,8 +581,8 @@ public class Interface extends javax.swing.JFrame {
         bN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(bN, gridBagConstraints);
 
         oN.setBackground(new java.awt.Color(33, 25, 81));
@@ -569,9 +592,9 @@ public class Interface extends javax.swing.JFrame {
         oN.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(oN, gridBagConstraints);
 
         oP.setBackground(new java.awt.Color(33, 25, 81));
@@ -581,9 +604,9 @@ public class Interface extends javax.swing.JFrame {
         oP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(oP, gridBagConstraints);
 
         abP.setBackground(new java.awt.Color(33, 25, 81));
@@ -593,8 +616,8 @@ public class Interface extends javax.swing.JFrame {
         abP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(abP, gridBagConstraints);
 
         bP.setBackground(new java.awt.Color(33, 25, 81));
@@ -604,8 +627,8 @@ public class Interface extends javax.swing.JFrame {
         bP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(bP, gridBagConstraints);
 
         aP.setBackground(new java.awt.Color(33, 25, 81));
@@ -620,9 +643,9 @@ public class Interface extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(aP, gridBagConstraints);
 
         I_Disctrict.setBackground(new java.awt.Color(33, 25, 81));
@@ -633,10 +656,10 @@ public class Interface extends javax.swing.JFrame {
         I_Disctrict.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_Disctrict, gridBagConstraints);
 
         I_Mun.setBackground(new java.awt.Color(49, 41, 102));
@@ -646,10 +669,10 @@ public class Interface extends javax.swing.JFrame {
         I_Mun.setPreferredSize(new java.awt.Dimension(220, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_Mun, gridBagConstraints);
 
         E_ExpID.setBackground(new java.awt.Color(49, 41, 102));
@@ -661,10 +684,10 @@ public class Interface extends javax.swing.JFrame {
         E_ExpID.setPreferredSize(new java.awt.Dimension(220, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(E_ExpID, gridBagConstraints);
 
         I_BritDep.setBackground(new java.awt.Color(33, 25, 81));
@@ -675,10 +698,10 @@ public class Interface extends javax.swing.JFrame {
         I_BritDep.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_BritDep, gridBagConstraints);
 
         I_Div.setBackground(new java.awt.Color(33, 25, 81));
@@ -689,10 +712,10 @@ public class Interface extends javax.swing.JFrame {
         I_Div.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_Div, gridBagConstraints);
 
         I_Sec.setBackground(new java.awt.Color(33, 25, 81));
@@ -703,10 +726,10 @@ public class Interface extends javax.swing.JFrame {
         I_Sec.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_Sec, gridBagConstraints);
 
         I_Dep.setBackground(new java.awt.Color(33, 25, 81));
@@ -719,10 +742,10 @@ public class Interface extends javax.swing.JFrame {
         I_Dep.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(I_Dep, gridBagConstraints);
 
         txt_EmpTy.setBackground(new java.awt.Color(33, 25, 81));
@@ -735,23 +758,99 @@ public class Interface extends javax.swing.JFrame {
         txt_EmpTy.setPreferredSize(new java.awt.Dimension(220, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Create.add(txt_EmpTy, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(1, 1, 1, 1);
         p_Create.add(I_BrttDa, gridBagConstraints);
+
+        jLabel32.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel32.setText("Name");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
+        p_Create.add(jLabel32, gridBagConstraints);
+
+        I_ID.setBackground(new java.awt.Color(49, 41, 102));
+        I_ID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_ID.setForeground(new java.awt.Color(240, 243, 255));
+        I_ID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_ID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        I_ID.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        I_ID.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        p_Create.add(I_ID, gridBagConstraints);
+
+        jLabel33.setBackground(new java.awt.Color(240, 243, 255));
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(240, 243, 255));
+        jLabel33.setText("Expedition Id");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 15);
+        p_Create.add(jLabel33, gridBagConstraints);
+
+        I_Name.setBackground(new java.awt.Color(49, 41, 102));
+        I_Name.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        I_Name.setForeground(new java.awt.Color(240, 243, 255));
+        I_Name.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 245, 186), 1, true));
+        I_Name.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        I_Name.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        I_Name.setPreferredSize(new java.awt.Dimension(220, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        p_Create.add(I_Name, gridBagConstraints);
 
         panels.addTab("tab1", p_Create);
 
         p_Read.setBackground(new java.awt.Color(35, 39, 42));
         p_Read.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(650, 402));
+
+        tableData.setBackground(new java.awt.Color(153, 170, 181));
+        tableData.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(114, 137, 218), 5, true));
+        tableData.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tableData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableData.setRowHeight(40);
+        tableData.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        tableData.setShowGrid(false);
+        jScrollPane3.setViewportView(tableData);
+
+        p_Read.add(jScrollPane3, new java.awt.GridBagConstraints());
+
         panels.addTab("tab2", p_Read);
 
         p_Delete.setBackground(new java.awt.Color(35, 39, 42));
@@ -759,11 +858,14 @@ public class Interface extends javax.swing.JFrame {
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jTextArea1.setBackground(new java.awt.Color(44, 47, 51));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(114, 137, 218), 1, true), "Output Delete", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(114, 137, 218))); // NOI18N
-        jScrollPane2.setViewportView(jTextArea1);
+        txt_Delete.setEditable(false);
+        txt_Delete.setBackground(new java.awt.Color(44, 47, 51));
+        txt_Delete.setColumns(20);
+        txt_Delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_Delete.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Delete.setRows(5);
+        txt_Delete.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(114, 137, 218), 1, true), "Output Delete", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(114, 137, 218))); // NOI18N
+        jScrollPane2.setViewportView(txt_Delete);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -781,32 +883,42 @@ public class Interface extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         p_Delete.add(jLabel30, gridBagConstraints);
 
-        jTextField1.setColumns(15);
+        I_IDDelete.setColumns(15);
+        I_IDDelete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                I_IDDeleteKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        p_Delete.add(jTextField1, gridBagConstraints);
+        p_Delete.add(I_IDDelete, gridBagConstraints);
 
-        buttonPanel1.setBorderColor(new java.awt.Color(254, 255, 255));
-        buttonPanel1.setBorderWidth(5);
-        buttonPanel1.setCornerRadius(50);
-        buttonPanel1.setEndColor(new java.awt.Color(255, 51, 51));
-        buttonPanel1.setPreferredSize(new java.awt.Dimension(150, 70));
-        buttonPanel1.setStartColor(new java.awt.Color(204, 0, 153));
-        buttonPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btn_Delete.setBorderColor(new java.awt.Color(254, 255, 255));
+        btn_Delete.setBorderWidth(5);
+        btn_Delete.setCornerRadius(50);
+        btn_Delete.setEndColor(new java.awt.Color(255, 51, 51));
+        btn_Delete.setPreferredSize(new java.awt.Dimension(150, 70));
+        btn_Delete.setStartColor(new java.awt.Color(204, 0, 153));
+        btn_Delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DeleteMouseClicked(evt);
+            }
+        });
+        btn_Delete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 34)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Delete");
-        buttonPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
+        btn_Delete.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        p_Delete.add(buttonPanel1, gridBagConstraints);
+        p_Delete.add(btn_Delete, gridBagConstraints);
 
         panels.addTab("tab4", p_Delete);
 
@@ -815,8 +927,10 @@ public class Interface extends javax.swing.JFrame {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(400, 500));
 
+        txt_Update.setEditable(false);
         txt_Update.setBackground(new java.awt.Color(44, 47, 51));
         txt_Update.setColumns(20);
+        txt_Update.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_Update.setForeground(new java.awt.Color(255, 255, 255));
         txt_Update.setRows(5);
         txt_Update.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(114, 137, 218), 1, true), "Output Update", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(114, 137, 218))); // NOI18N
@@ -861,18 +975,26 @@ public class Interface extends javax.swing.JFrame {
         p_Update.add(jLabel28, gridBagConstraints);
 
         I_IDUpdate.setColumns(15);
+        I_IDUpdate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                I_IDUpdateKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                I_IDUpdateKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         p_Update.add(I_IDUpdate, gridBagConstraints);
 
-        I_NewValueUpdate.setColumns(15);
+        I_ValueUpdate.setColumns(15);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
-        p_Update.add(I_NewValueUpdate, gridBagConstraints);
+        p_Update.add(I_ValueUpdate, gridBagConstraints);
 
         btn_Update.setBorderColor(new java.awt.Color(204, 204, 204));
         btn_Update.setBorderWidth(5);
@@ -880,6 +1002,11 @@ public class Interface extends javax.swing.JFrame {
         btn_Update.setEndColor(new java.awt.Color(0, 110, 140));
         btn_Update.setPreferredSize(new java.awt.Dimension(150, 70));
         btn_Update.setStartColor(new java.awt.Color(0, 0, 124));
+        btn_Update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_UpdateMouseClicked(evt);
+            }
+        });
         btn_Update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
@@ -894,13 +1021,13 @@ public class Interface extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         p_Update.add(btn_Update, gridBagConstraints);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Days Worked", "Extra Day", "Extra Night", "Extra Sunday", "SBMA", " " }));
+        I_AtributeUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Days Worked", "Extra Day", "Extra Night", "Extra Sunday", "SBMA", " " }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        p_Update.add(jComboBox1, gridBagConstraints);
+        p_Update.add(I_AtributeUpdate, gridBagConstraints);
 
         panels.addTab("tab3", p_Update);
 
@@ -918,23 +1045,42 @@ public class Interface extends javax.swing.JFrame {
 
     private void b_UpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_UpdateMouseClicked
         // TODO add your handling code here:
-        panels.setSelectedIndex(1);
+        panels.setSelectedIndex(3);
         ClearButtons();
         b_Update.setBorderWidth(5);
+        txt_Update.setText("");
     }//GEN-LAST:event_b_UpdateMouseClicked
 
     private void b_ReadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ReadMouseClicked
         // TODO add your handling code here:
-        panels.setSelectedIndex(2);
+        panels.setSelectedIndex(1);
         ClearButtons();
         b_Read.setBorderWidth(5);
+
+        while (ModelTable.getRowCount() > 0) {
+            ModelTable.removeRow(0);
+        }
+        
+
+        Employee[] EmpOrd = ObjOrd.Ordenar(data, index);
+
+        for(int i = 0; i < index; i++){
+            Object[] dataToTable = { EmpOrd[i].getID(), EmpOrd[i].getName(), EmpOrd[i].getJA_DayW_47(),
+                EmpOrd[i].getJA_ExtrD_47(), EmpOrd[i].getJA_ExtrN_47(), EmpOrd[i].getJA_ExtrS(),
+                EmpOrd[i].getJA_SBMA_47(), EmpOrd[i].getJA_Net_47()
+            };
+
+            ModelTable.addRow(dataToTable);
+            System.out.println("Filas: " + ModelTable.getRowCount());
+        }
     }//GEN-LAST:event_b_ReadMouseClicked
 
     private void b_DeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_DeleteMouseClicked
         // TODO add your handling code here:
-        panels.setSelectedIndex(3);
+        panels.setSelectedIndex(2);
         ClearButtons();
         b_Delete.setBorderWidth(5);
+        txt_Delete.setText("");
     }//GEN-LAST:event_b_DeleteMouseClicked
 
     private void btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NextActionPerformed
@@ -987,6 +1133,8 @@ public class Interface extends javax.swing.JFrame {
         //Settear los datos si todos estan dentro de los parametros
     if(FlasState){
         //Setteo de datos
+        data[index].setID(Integer.parseInt(I_ID.getText()));
+        data[index].setName(I_Name.getText());
         data[index].setJA_EmplTy_47(txt_EmpTy.getSelectedIndex() + 1);
         data[index].setJA_WorkDep_47(I_Dep.getSelectedIndex() + 1);
         data[index].setDateTimeJA_BrithDate_47(I_BrttDa.getDate());
@@ -1008,7 +1156,10 @@ public class Interface extends javax.swing.JFrame {
                 data[index].setJA_Div_47(I_Div.getSelectedIndex() +1);
             }
         }
+            
         SendValues();
+        System.out.println("Emplado añadido!: " + data[index].getID());
+        index++;
     }
     }//GEN-LAST:event_btn_NextActionPerformed
 
@@ -1020,6 +1171,152 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_aPActionPerformed
 
+    private void btn_UpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_UpdateMouseClicked
+        // TODO add your handling code here:
+        int ID = Integer.parseInt(I_IDUpdate.getText());
+        String Value = I_ValueUpdate.getText();
+
+        for(int i = 0; i < index; i++){
+            if(data[i].getID() == ID){
+                switch (I_AtributeUpdate.getSelectedIndex()) {
+                    case 0:
+                        data[i].setName(Value);
+                        break;
+
+                    case 1:
+                        data[i].setJA_DayW_47(Integer.parseInt(Value));
+                        break;
+
+                    case 2:
+                        data[i].setJA_ExtrD_47(Integer.parseInt(Value));
+                        break;
+
+                    case 3:
+                        data[i].setJA_ExtrN_47(Integer.parseInt(Value));
+                        break;
+
+                    case 4:
+                        data[i].setJA_ExtrS(Integer.parseInt(Value));
+                        break;
+
+                    case 5:
+                        data[i].setJA_SBMA_47(Double.parseDouble(Value));
+                        break;
+                
+                    default:
+                        break;
+                }
+                txt_Update.append("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                txt_Update.append("\nValue update sucessful");
+                ShowValues(data[i], txt_Update);
+                JOptionPane.showMessageDialog(null, 
+                    "Successful Update", 
+                    "Information", 
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                break;
+            }
+        }
+    }//GEN-LAST:event_btn_UpdateMouseClicked
+
+    private void btn_DeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteMouseClicked
+        // TODO add your handling code here:
+        int ID = Integer.parseInt(I_IDDelete.getText());
+        Employee TemObj[] = new Employee[100];
+
+        for(int i = 0; i < 100; i++){
+            if(data[i].getID() != ID){
+                TemObj[i] = data[i];
+            }
+        }   
+
+        data = TemObj;
+
+        JOptionPane.showMessageDialog(null, 
+            "The employee was eliminated", 
+            "Information", 
+            JOptionPane.INFORMATION_MESSAGE
+        );
+
+        
+    }//GEN-LAST:event_btn_DeleteMouseClicked
+
+    private void I_IDDeleteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_I_IDDeleteKeyPressed
+        // TODO add your handling code here:
+        try {
+            int ID = Integer.parseInt(I_IDDelete.getText());
+            for(int i = 0; i < index; i++){
+                if(data[i].getID() == ID){
+                    txt_Update.setText("");
+                    ShowValues(data[i], txt_Delete);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }//GEN-LAST:event_I_IDDeleteKeyPressed
+
+    private void I_IDUpdateKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_I_IDUpdateKeyReleased
+        // TODO add your handling code here:
+        try {
+            int ID = Integer.parseInt(I_IDUpdate.getText());
+            for(int i = 0; i < index; i++){
+                if(data[i].getID() == ID){
+                    txt_Update.setText("");
+                    ShowValues(data[i], txt_Update);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }//GEN-LAST:event_I_IDUpdateKeyReleased
+
+    private void I_IDUpdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_I_IDUpdateKeyPressed
+        // TODO add your handling code here:
+        try {
+            int ID = Integer.parseInt(I_IDUpdate.getText());
+            for(int i = 0; i < index; i++){
+                if(data[i].getID() == ID){
+                    txt_Update.setText("");
+                    ShowValues(data[i], txt_Update);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+    }//GEN-LAST:event_I_IDUpdateKeyPressed
+
+    private void ShowValues(Employee ObjE, JTextArea txtArea){
+        txtArea.append("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        txtArea.append("\nID: " + ObjE.getID());
+        txtArea.append("\nName: " + ObjE.getName());
+        txtArea.append("\nJA_DayW_47: " + ObjE.getJA_EmplTy_47());
+        txtArea.append("\nDepartament: " + ObjE.getJA_WorkDep_47());
+        txtArea.append("\nSection: " + ObjE.getJA_Sec_47());
+        txtArea.append("\nDivision: " + ObjE.getJA_Div_47());
+        txtArea.append("\nBrithDate: " + ObjE.getID());
+        txtArea.append("\nDepartament: " + ObjE.getJA_BrithDep_47());
+        txtArea.append("\nExpedition ID: " + ObjE.getJA_ExpID_47());
+        txtArea.append("\nMunicipiality: " + ObjE.getJA_Mun_47());
+        txtArea.append("\nDistrict: " + ObjE.getJA_District());
+        txtArea.append("\nBlood type: " + ObjE.getJA_BloodTy_47());
+        txtArea.append("\nZodiac Sign: " + ObjE.getJA_ZodiSign_47());
+        txtArea.append("\nSBMA: " + ObjE.getJA_SBMA_47());
+        txtArea.append("\nDays Worked: " + ObjE.getJA_DayW_47());
+        txtArea.append("\nDaytime: " + ObjE.getJA_ExtrD_47());
+        txtArea.append("\nNight: " + ObjE.getJA_ExtrN_47());
+        txtArea.append("\nSundays: " + ObjE.getJA_ExtrS());
+        txtArea.append("\nNet: " + ObjE.getJA_Net_47());
+        txtArea.append("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        
+    }
+
+
+
     private void ClearButtons(){
         b_Create.setBorderWidth(0);
         b_Update.setBorderWidth(0);
@@ -1030,7 +1327,6 @@ public class Interface extends javax.swing.JFrame {
     private void SendValues(){
         //Realiza los calculos
         data[index].setJA_Age_47(ObjM.Ja_CalcAge_47(data[index].getDateTimeJA_BrithDate_47()));
-        System.out.println(String.valueOf(data[index].getJA_Age_47()));
         //Time value-------------------------------------------------------------------------------------------------------------------------------------
         data[index].setJA_Day_47(ObjM.JA_Day_47(data[index].getJA_SBMA_47()));
         data[index].setJA_Fortnight_47(ObjM.JA_Fortnight_47(data[index].getJA_SBMA_47()));
@@ -1128,6 +1424,7 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField E_ExpID;
+    private javax.swing.JComboBox<String> I_AtributeUpdate;
     private javax.swing.JComboBox<String> I_BritDep;
     private com.toedter.calendar.JDateChooser I_BrttDa;
     private javax.swing.JTextField I_DaysW;
@@ -1137,11 +1434,14 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField I_ExtDay;
     private javax.swing.JTextField I_ExtNig;
     private javax.swing.JTextField I_ExtSun;
+    private javax.swing.JTextField I_ID;
+    private javax.swing.JTextField I_IDDelete;
     private javax.swing.JTextField I_IDUpdate;
     private javax.swing.JTextField I_Mun;
-    private javax.swing.JTextField I_NewValueUpdate;
+    private javax.swing.JTextField I_Name;
     private javax.swing.JTextField I_Salary;
     private javax.swing.JComboBox<String> I_Sec;
+    private javax.swing.JTextField I_ValueUpdate;
     private javax.swing.JComboBox<String> I_ZodSig;
     private javax.swing.JRadioButton aN;
     private javax.swing.JRadioButton aP;
@@ -1153,10 +1453,9 @@ public class Interface extends javax.swing.JFrame {
     private manulibrary.buttonPanel b_Delete;
     private manulibrary.buttonPanel b_Read;
     private manulibrary.buttonPanel b_Update;
+    private manulibrary.buttonPanel btn_Delete;
     private javax.swing.JButton btn_Next;
     private manulibrary.buttonPanel btn_Update;
-    private manulibrary.buttonPanel buttonPanel1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1182,6 +1481,8 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1190,8 +1491,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JRadioButton oN;
     private javax.swing.JRadioButton oP;
     private javax.swing.JPanel p_Create;
@@ -1200,6 +1500,8 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JPanel p_Read;
     private javax.swing.JPanel p_Update;
     private javax.swing.JTabbedPane panels;
+    private javax.swing.JTable tableData;
+    private javax.swing.JTextArea txt_Delete;
     private javax.swing.JComboBox<String> txt_EmpTy;
     private javax.swing.JTextArea txt_Update;
     // End of variables declaration//GEN-END:variables
